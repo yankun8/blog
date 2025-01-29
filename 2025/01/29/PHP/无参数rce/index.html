@@ -26,10 +26,20 @@
 <meta property="og:site_name" content="yankun">
 <meta property="og:description" content="无参数RCE题目特征123if(&#x27;;&#x27; &#x3D;&#x3D;&#x3D; preg_replace(&#x27;&#x2F;[^\W]+\((?R)?\)&#x2F;&#x27;, &#x27;&#x27;, $_GET[&#x27;star&#x27;])) &#123;        eval($_GET[&#x27;star&#x27;]);&#125;  正则表达式 [^\W]+\((?R)?\) 匹配了一个或多个">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-29T11:47:23.928Z">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129195647510.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129200501464.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129200643025.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129200853439.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129200918061.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129201750646.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129202117068.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129202327073.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129202339375.png">
+<meta property="article:published_time" content="2025-01-29T13:35:30.450Z">
 <meta property="article:modified_time" content="2025-01-29T12:31:55.202Z">
 <meta property="article:author" content="yankun">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yankun8.github.io/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129195647510.png">
   
   
   
@@ -210,7 +220,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-29 19:47" pubdate>
+        <time datetime="2025-01-29 21:35" pubdate>
           2025年1月29日 晚上
         </time>
       </span>
@@ -282,7 +292,7 @@
 
 
 
-
+<img src="/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129195647510.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250129195647510">
 
 <p>所以就需要找到能够查看目录文件的函数并且不带参数</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">scandir</span>()可以使用里面不含参数<br><span class="hljs-title function_ invoke__">scandir</span>(<span class="hljs-string">&#x27;1&#x27;</span>)不可以使用，里面含有参数<span class="hljs-number">1</span>，无法被替换删除<br></code></pre></td></tr></table></figure>
@@ -305,16 +315,16 @@
 
 <p>接下来逐个分析payload的构成：</p>
 <p>1、var_dump(localeconv());可以看见第一个string[1]就是一个“.”，这个点是由localeconv()产生的</p>
-
+<img src="/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129200501464.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250129200501464">
 
 <p>2、利用<code>current()</code>函数将这个点取出来的，<code>‘.’</code>代表的是当前目录，那接下来就很好理解了，我们可以利用这个点完成遍历目录的操作，相当于就是<code>linux</code>中的<code>ls</code>指令</p>
-
+<img src="/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129200643025.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250129200643025">
 
 <p>3、既然current()取第一个值，那么current(localeconv())构造一个<code>&#39;.&#39;</code>,<strong>而</strong><code>&#39;.&#39;</code> <strong>表示当前目录</strong>，<code>scandir(&#39;.&#39;)</code> 将返回当前目录中的文件和子目录，这里我们得知flag所在的文件名就是flag.php</p>
-
+<img src="/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129200853439.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250129200853439">
 
 <p>4、然而flag的文件名在比较后端我们可以通过array_reverse()将数组内容反转，让它从倒数第二的位置变成正数第二</p>
-
+<img src="/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129200918061.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250129200918061">
 
 <p>5、移动指针读取第二个数组，参照下列数组移动操作可知我们应选用next()函数：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">end</span>() ： 将内部指针指向数组中的最后一个元素，并输出<br><span class="hljs-title function_ invoke__">next</span>() ：将内部指针指向数组中的下一个元素，并输出<br><span class="hljs-title function_ invoke__">prev</span>() ：将内部指针指向数组中的上一个元素，并输出<br><span class="hljs-title function_ invoke__">reset</span>() ： 将内部指针指向数组中的第一个元素，并输出<br><span class="hljs-title function_ invoke__">each</span>() ： 返回当前元素的键名和键值，并将内部指针向前移动<br></code></pre></td></tr></table></figure>
@@ -338,14 +348,14 @@
 <p>如果已知文件名，把文件名写在PHPSESSID后面，构造payload为：</p>
 <figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-function"><span class="hljs-title"><span class="hljs-built_in">readfile</span></span>(<span class="hljs-title">session_id</span>(<span class="hljs-title">session_start</span>()));</span><br></code></pre></td></tr></table></figure>
 
-
+<img src="/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129201750646.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250129201750646">
 
 <h3 id="方法三：getallheaders"><a href="#方法三：getallheaders" class="headerlink" title="方法三：getallheaders()"></a>方法三：getallheaders()</h3><p>getallheaders()返回当前请求的所有请求头信息，局限于Apache（apache_request_headers()和getallheaders()功能相似，可互相替代，不过也是局限于Apache）</p>
 <p>当确定能够返回时，我们就能在数据包最后一行加上一个请求头，写入恶意代码，再用end()函数指向最后一个请求头，使其执行，payload：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-title function_ invoke__">end</span>(<span class="hljs-title function_ invoke__">getallheaders</span>()));<br></code></pre></td></tr></table></figure>
 
 <p>借用别人的图演示：</p>
-
+<img src="/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129202117068.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250129202117068">
 
 <p>sky是自己添加的请求头， end()指向最后一行的sky后的代码，达到phpinfo的目的，然后可以进一步去rce。</p>
 <h3 id="方法四：get-defined-vars"><a href="#方法四：get-defined-vars" class="headerlink" title="方法四：get_defined_vars()"></a>方法四：get_defined_vars()</h3><p>相较于getallheaders（）更加具有普遍性，它可以回显全局变量$_GET、$_POST、$_FILES、$_COOKIE，</p>
@@ -375,9 +385,9 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">?code=<span class="hljs-title function_ invoke__">show_source</span>(<span class="hljs-title function_ invoke__">array_rand</span>(<span class="hljs-title function_ invoke__">array_flip</span>(<span class="hljs-title function_ invoke__">scandir</span>(<span class="hljs-title function_ invoke__">dirname</span>(<span class="hljs-title function_ invoke__">chdir</span>(<span class="hljs-title function_ invoke__">chr</span>(<span class="hljs-title function_ invoke__">ord</span>(<span class="hljs-title function_ invoke__">strrev</span>(<span class="hljs-title function_ invoke__">crypt</span>(<span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-keyword">array</span>() )))))))))));<br></code></pre></td></tr></table></figure>
 
 <p>通过bp的intruder模块来读到根目录：</p>
+<img src="/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129202327073.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250129202327073">
 
-
-
+<img src="/blog/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/image-20250129202339375.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250129202339375">
 
 <p>文章参考了：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_76690905/article/details/133808536">https://blog.csdn.net/2301_76690905/article/details/133808536</a></p>
 
